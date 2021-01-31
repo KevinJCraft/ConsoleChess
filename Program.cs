@@ -6,7 +6,7 @@ namespace ConsoleChess
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("This will be a chess app!");
         }
     }
 }
