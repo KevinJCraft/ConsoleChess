@@ -6,16 +6,9 @@ namespace ConsoleChess
     {
         static void Main(string[] args)
         {
-            try
-            {
-                var board = new Board();
-                board.PrintBoard();
+            var game = new Game();
+            game.DisplayBoard();
 
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
             //var king = new King();
 
             //Square kingSquare = board.GetSquareAt(1, 'e');

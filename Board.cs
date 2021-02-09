@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 namespace ConsoleChess
 {
     class Board
@@ -27,16 +29,17 @@ namespace ConsoleChess
             }
         }
 
-        public void PrintBoard()
+        public void PrintBoard(List<Piece> pieces)
         {
             Console.Clear();
             foreach (Square square in _board)
             {
+                string occupantDisplay = getOccupant(pieces, square);
                 if (square.File.Equals('a'))
                 {
                     Console.Write(square.Rank);
                 }
-                square.PrintSquare();
+                square.PrintSquare(occupantDisplay);
                 if (square.File.Equals('h'))
                 {
                     Console.Write("\n");
@@ -44,6 +47,23 @@ namespace ConsoleChess
             }
             Console.WriteLine(" a b c d e f g h");
         }
+
+        public string getOccupant(List<Piece> pieces, Square square)
+        {
+            string display = "  ";
+            foreach (Piece p in pieces)
+            {
+                if (p.File == square.File && p.Rank == square.Rank)
+                {
+                    Console.ForegroundColor = p.Team == "black" ? ConsoleColor.Black : ConsoleColor.White;
+                    display = p.Display;
+                }
+            }
+
+            return display;
+        }
+
+
 
         // public Square GetSquareAt(int rank, char file)
         // {
